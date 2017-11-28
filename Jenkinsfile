@@ -1,34 +1,30 @@
-#!/usr/bin/env groovy
+pipeline {
 
+agent { label 'DEVELOPMENT' }
 
-node('docker') {
+stages {
 
-
-//try{
-  stage('Checkout from Git') {
-    // No special needs here, if your projects relys on submodules the checkout step would need to be different
-    checkout scm
+  stage('Build') {
+    steps {
+    echo "Build step is getting executed...!!!!"
+    }
+  }
+  stage('Test') {
+    steps {
+    echo "Test step is getting executed...!!!!"
+    }
+  }
+  stage('Running_Script') {
+    steps {
+    sh("python hello.py")
+    }
+  }
+  stage('Deploy') {
+    steps {
+    echo "Deploy step is getting executed...!!!!"
+    }
   }
 
-  stage('Run new Container') {
-    sh 'pwd'
-    }
-
-//}catch (any) {
-  //emailext (
-    //       subject: "Error: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-      //     body: """Error: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'""",
-        //   recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-          // to: ''
-         //)
-//}finally {
-  //emailext (
-    //       subject: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-      //     body: """Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'""",
-        //   recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-          // to: ''
-//
-  //       )
-//}
+}
 
 }
