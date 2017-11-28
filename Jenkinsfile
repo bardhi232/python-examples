@@ -16,7 +16,7 @@ stages {
   }
   stage('Running_Script') {
     steps {
-    sh("python hello.py")
+    sh("python basic_examples/python_strings.py")
     }
   }
   stage('Deploy') {
