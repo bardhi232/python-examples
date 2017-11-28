@@ -16,6 +16,7 @@ stages {
   }
   stage('Running_Script') {
     steps {
+    sh("pwd")
     sh("python basic_examples/python_strings.py")
     }
   }
